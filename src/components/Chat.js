@@ -5,7 +5,10 @@ import { io } from "socket.io-client";
 import customAxios from "../api/customAxios";
 import { findEveryoneUserFollows } from "../api/followApi";
 import "../css/Chat.css";
-const socket = io.connect("http://localhost:3001", { withCredentials: true });
+const socket = io.connect(
+  "http://twitter-clone-backend-production-1af3.up.railway.app",
+  { withCredentials: true }
+);
 
 const Chat = () => {
   const [chatInput, setChatInput] = useState("");
@@ -50,10 +53,7 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("receive-message", (message) => {
-      setMessages((prevState) => [
-        ...prevState,
-        { message, received: true },
-      ]);
+      setMessages((prevState) => [...prevState, { message, received: true }]);
     });
   }, [socket]);
 
@@ -174,7 +174,9 @@ const Chat = () => {
                   );
                 }
                 if (
-                  messageArray[index - 1 < 0 ? 0 : index - 1].received === false && message.message !== null
+                  messageArray[index - 1 < 0 ? 0 : index - 1].received ===
+                    false &&
+                  message.message !== null
                 ) {
                   return (
                     <span
@@ -193,7 +195,7 @@ const Chat = () => {
                     </span>
                   );
                 } else {
-                  if(message.message !== null){
+                  if (message.message !== null) {
                     return (
                       <span className="sent-message-container" key={index}>
                         <Avatar>You</Avatar>
