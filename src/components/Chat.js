@@ -5,10 +5,9 @@ import { io } from "socket.io-client";
 import customAxios from "../api/customAxios";
 import { findEveryoneUserFollows } from "../api/followApi";
 import "../css/Chat.css";
-const socket = io.connect(
-  "twitter-clone-backend-production-1af3.up.railway.app",
-  { withCredentials: true }
-);
+const socket = io.connect("https://clinquant-banoffee-a149ef.netlify.app/", {
+  withCredentials: true,
+});
 
 const Chat = () => {
   const [chatInput, setChatInput] = useState("");

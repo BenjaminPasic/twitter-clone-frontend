@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customAxios = axios.create({
-  baseURL: "twitter-clone-backend-production-1af3.up.railway.app",
+  baseURL: "https://clinquant-banoffee-a149ef.netlify.app/",
   withCredentials: true,
 });
 
