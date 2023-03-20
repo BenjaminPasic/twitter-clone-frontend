@@ -6,7 +6,7 @@ import customAxios from "../api/customAxios";
 import { findEveryoneUserFollows } from "../api/followApi";
 import "../css/Chat.css";
 const socket = io.connect(
-  "http://twitter-clone-backend-production-1af3.up.railway.app",
+  "twitter-clone-backend-production-1af3.up.railway.app",
   { withCredentials: true }
 );
 
