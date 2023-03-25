@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import customAxios from "../api/customAxios";
 import { findEveryoneUserFollows } from "../api/followApi";
 import "../css/Chat.css";
-const socket = io.connect("https://clinquant-banoffee-a149ef.netlify.app/", {
+const socket = io.connect("https://sage-flan-e06d7e.netlify.app", {
   withCredentials: true,
 });
 
