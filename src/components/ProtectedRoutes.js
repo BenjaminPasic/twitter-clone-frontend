@@ -1,8 +1,8 @@
-import { useQuery } from "react-query";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Outlet, Navigate } from "react-router-dom";
+import { useQuery } from "react-query";
+import { Navigate, Outlet } from "react-router-dom";
+import { getUsername, verifyToken } from "../api/userApi";
 import useAuth from "../hooks/useAuth";
-import { verifyToken, getUsername } from "../api/userApi";
 
 export default function ProtectedRoutes() {
   const { setIsAuth, isAuth, username, setUsername } = useAuth();
@@ -14,6 +14,9 @@ export default function ProtectedRoutes() {
   } = useQuery("getUsername", getUsername, {
     onSuccess: ({ data }) => {
       setUsername(data?.username);
+    },
+    onError: (error) => {
+      console.log(error);
     },
     enabled: false,
   });
@@ -28,6 +31,9 @@ export default function ProtectedRoutes() {
       } else {
         setIsAuth(false);
       }
+    },
+    onError: (error) => {
+      console.log(error);
     },
     cacheTime: 0,
     staleTime: 0,
